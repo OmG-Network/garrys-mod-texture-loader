@@ -29,7 +29,7 @@ public class Gmod_loader {
         
         // Pfad eingabe
         
-        System.out.print("Wurde Garrrys Mod auf einer anderen Festplatte oder auserhalb des Standard Pafades installiert ? Y/N");
+        System.out.print("Wurde Garrys Mod auf einer anderen Festplatte oder außerhalb des Standard Pfades installiert ? Y/N");
         String answer = s.next();
         String path = null;
         
@@ -40,9 +40,9 @@ public class Gmod_loader {
             
         } else if ("n".equals(answer)){
             
-            if (!"Windows".equals(System.getProperty("os.name"))){
+            if (!"Windows".contains(System.getProperty("os.name"))){
                 
-                System.out.println("Mometan gib es noch keinen Standardpfad für " + System.getProperty("os.name")+" bitte gebe den Pfad manuell ein");
+                System.out.println("Mometan gib es keinen Standardpfad für " + System.getProperty("os.name")+" bitte gebe den Pfad manuell ein");
                 System.exit(0);
        
             }
@@ -67,7 +67,7 @@ public class Gmod_loader {
         String saveDir = tempFilePath;
         
         System.out.println("Downloadvorbereitungen wurden abgeschlossen möchtest du starten ?");
-        System.out.println("Beliebige taste um fortzufahren");
+        System.out.println("Beliebiges Zeichen eingeben um fortzufahren");
         s.next();
         
         try {
@@ -75,11 +75,11 @@ public class Gmod_loader {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        System.out.print("Der Download wurde abgeschlossen");
+        System.out.println("Der Download wurde abgeschlossen");
         
        // Extract Tar GZ
        
-       System.out.print("Starte Entpack vorgang");
+       System.out.println("Starte Entpack vorgang");
        
        File archive = new File(tempFilePath+"/textures.tar.gz");
        
@@ -87,7 +87,7 @@ public class Gmod_loader {
 
        Archiver archiver = ArchiverFactory.createArchiver("tar", "gz");
        archiver.extract(archive, destination);
-       System.out.print("Entpacken abgeschlossen");
+       System.out.println("Entpacken abgeschlossen");
        System.out.println("Installation abgeschlossen");
        
        // Lösche Archiv
