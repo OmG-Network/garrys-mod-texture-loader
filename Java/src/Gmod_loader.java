@@ -1,4 +1,3 @@
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
@@ -33,25 +32,36 @@ public class Gmod_loader {
         String answer = s.next();
         String path = null;
         
-        if ("y".equals(answer)){
+       if ("y".equals(answer)){
             
             System.out.println("Bitte geben sie den Speicherpfad des Addon Ordners an");
             path = s.next();
             
         } else if ("n".equals(answer)){
             
-            if (!"Windows".contains(System.getProperty("os.name"))){
+            if (!"Windows ([0-7])".contains(System.getProperty("os.name"))){
                 
                 System.out.println("Mometan gib es keinen Standardpfad für " + System.getProperty("os.name")+" bitte gebe den Pfad manuell ein");
                 System.exit(0);
        
             }
+
+           /* if ("Linux".contains(System.getProperty("os.name"))){
+                
+                System.out.println("Mometan gib es keinen Standardpfad für " + System.getProperty("os.name")+" bitte gebe den Pfad manuell ein");
+                System.exit(0);
+       
+            }*/
             path = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\GarrysMod\\garrysmod\\addons";
-            System.out.println("Der Speicherpfad von Garrys Mod wurde nicht verändert" +path);
+            System.out.println("Der Speicherpfad von Garrys Mod wurde nicht verändert");
+            System.out.println(path);
             
             
         }
-        
+        if (!"y".equals(answer) || "n".equals(answer)){
+                System.exit(0);
+    } 
+       
         // Suche tmp Ordner
         
          File temp = File.createTempFile("temp-file-name", ".tmp");
@@ -67,7 +77,7 @@ public class Gmod_loader {
         String saveDir = tempFilePath;
         
         System.out.println("Downloadvorbereitungen wurden abgeschlossen möchtest du starten ?");
-        System.out.println("Beliebiges Zeichen eingeben um fortzufahren");
+        System.out.println("Beliebige eingabe um fortzufahren");
         s.next();
         
         try {
